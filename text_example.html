@@ -1,0 +1,28 @@
+<html>
+<head>
+    <style>
+.container {
+    width: 0px; 
+    height: 0px;
+    position: absolute;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    & > * { transition: transform 0s 999s; /*will-change: transform;*/ }
+}
+    </style>
+    <script>
+let b = 1
+setInterval(() => { 
+    document.querySelector('.container > *').style.transform = `scaleY(${b = 1 - b})`; 
+}, 500)
+    </script>
+</head>
+<body> 
+    <div style="position: relative; width: 101px"><!--every odd width works-->
+        <div class="container">
+            <div style="padding: 0.1px;">moving</div>
+        </div>
+    </div>
+</body>
+</html>

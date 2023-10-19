@@ -1,0 +1,24 @@
+<html>
+<head>
+    <style>
+body > span { 
+    display: inline-block; height: 20px; background-color: red;
+
+    margin-left: 0.5px;
+    width: 1.5px; /*scaleY(1) - becomes 1px, scaleY(0) - becomes 2px*/
+    transition: transform 0s 999s; /*or  transition: transform 999s; */
+    /*will-change: transform;*/
+}
+/*padding values affected: 0.5, 0.99, 1.5, 1.99*/
+/*           not affected: 0.0, 0.49, 1.0, 1.49*/
+    </style>
+</head>
+<body> 
+    <span></span>
+    <script>
+//if b = 0, the effect appears only on the 4th scale change:  init -> 1 -> 0 -> 1 -> changes width
+let b = 1, e = document.querySelector('body *').style;
+setInterval(() => e.transform = `rotateY(${0.01 * (b = 1 - b)}deg)`, 500)
+    </script>
+</body>
+</html>
